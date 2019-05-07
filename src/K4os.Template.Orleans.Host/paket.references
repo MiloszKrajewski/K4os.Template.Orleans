@@ -1,0 +1,5 @@
+﻿Microsoft.Orleans.Server
+OrleansDashboard
+
+Microsoft.Extensions.DependencyInjection
+Microsoft.Extensions.Logging

@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2024
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K4os.Template.Orleans.Test", "K4os.Template.Orleans.Test\K4os.Template.Orleans.Test.csproj", "{2DE95B37-6840-4940-A850-C4AD9B9B9DEE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{835ECDA0-7229-4D96-8B74-8D9F119E6683}"
+	ProjectSection(SolutionItems) = preProject
+		..\build.fsx = ..\build.fsx
+		..\build.tools.fsx = ..\build.tools.fsx
+		..\CHANGES.md = ..\CHANGES.md
+		..\paket.dependencies = ..\paket.dependencies
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K4os.Template.Orleans.Interfaces", "K4os.Template.Orleans.Interfaces\K4os.Template.Orleans.Interfaces.csproj", "{6AE82006-3BE2-482E-8ED1-56327FE1C5FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K4os.Template.Orleans.Client", "K4os.Template.Orleans.Client\K4os.Template.Orleans.Client.csproj", "{3B9FA881-0222-4083-A5C0-CFB510559F06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K4os.Template.Orleans.Grains", "K4os.Template.Orleans.Grains\K4os.Template.Orleans.Grains.csproj", "{33996CC6-AC63-4EEC-81CE-664D69D32F3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K4os.Template.Orleans.Host", "K4os.Template.Orleans.Host\K4os.Template.Orleans.Host.csproj", "{64693670-F2A8-42AA-AB42-0AA8C5A471E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K4os.Template.Orleans.Demo", "K4os.Template.Orleans.Demo\K4os.Template.Orleans.Demo.csproj", "{C4BCED9E-8234-47CD-A73D-258DEEDDD084}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2DE95B37-6840-4940-A850-C4AD9B9B9DEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DE95B37-6840-4940-A850-C4AD9B9B9DEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DE95B37-6840-4940-A850-C4AD9B9B9DEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DE95B37-6840-4940-A850-C4AD9B9B9DEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AE82006-3BE2-482E-8ED1-56327FE1C5FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AE82006-3BE2-482E-8ED1-56327FE1C5FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AE82006-3BE2-482E-8ED1-56327FE1C5FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AE82006-3BE2-482E-8ED1-56327FE1C5FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B9FA881-0222-4083-A5C0-CFB510559F06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B9FA881-0222-4083-A5C0-CFB510559F06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B9FA881-0222-4083-A5C0-CFB510559F06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B9FA881-0222-4083-A5C0-CFB510559F06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33996CC6-AC63-4EEC-81CE-664D69D32F3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33996CC6-AC63-4EEC-81CE-664D69D32F3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33996CC6-AC63-4EEC-81CE-664D69D32F3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33996CC6-AC63-4EEC-81CE-664D69D32F3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64693670-F2A8-42AA-AB42-0AA8C5A471E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64693670-F2A8-42AA-AB42-0AA8C5A471E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64693670-F2A8-42AA-AB42-0AA8C5A471E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64693670-F2A8-42AA-AB42-0AA8C5A471E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4BCED9E-8234-47CD-A73D-258DEEDDD084}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4BCED9E-8234-47CD-A73D-258DEEDDD084}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4BCED9E-8234-47CD-A73D-258DEEDDD084}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4BCED9E-8234-47CD-A73D-258DEEDDD084}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D78F4C97-34B7-4027-9A38-DB5F9941559C}
+	EndGlobalSection
+EndGlobal

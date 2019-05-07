@@ -1,0 +1,4 @@
+﻿Microsoft.Orleans.Client
+
+Microsoft.Extensions.DependencyInjection
+Microsoft.Extensions.Logging
