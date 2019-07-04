@@ -111,7 +111,7 @@ module Config =
     type Item = { Section: string; Key: string; Value: string }
     let private sectionRx = """^\s*\[\s*(?<name>.*?)\s*\]\s*$""" |> Regex.create true
     let private valueRx = """^\s*(?<key>.*?)\s*(=\s*(?<value>.*?)\s*)?$""" |> Regex.create true
-    let private emptyRx = """^\s*(;.*)?$""" |> Regex.create true
+    let private emptyRx = """^\s*([#;].*)?$""" |> Regex.create true
     let validate (items: Item seq) = items |> Seq.distinctBy (fun i -> i.Section, i.Key) |> List.ofSeq
     let merge configs = configs |> Seq.collect id |> validate
     let load (lines: seq<string>) =
