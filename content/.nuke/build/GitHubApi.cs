@@ -11,9 +11,19 @@ using Octokit;
 using Octokit.Internal;
 using Serilog;
 
-public class GitHubReleaser
+public class GitHubApi
 {
-	static async Task UploadReleaseAssetToGithub(Release release, string asset)
+	readonly IReleasesClient ReleaseApi;
+
+	public GitHubApi(string token)
+	{
+		var client = new GitHubClient(
+			new ProductHeaderValue(nameof(GitHubApi)),
+			new InMemoryCredentialStore(new Credentials(token)));
+		ReleaseApi = client.Repository.Release;
+	}
+
+	async Task UploadReleaseAssetToGithub(Release release, string asset)
 	{
 		await using var artifactStream = File.OpenRead(asset);
 		var fileName = Path.GetFileName(asset);
@@ -23,26 +33,40 @@ public class GitHubReleaser
 			RawData = artifactStream,
 		};
 		Log.Information("Uploading {FileName}...", fileName);
-		await GitHubTasks.GitHubClient.Repository.Release.UploadAsset(release, assetUpload);
+		await ReleaseApi.UploadAsset(release, assetUpload);
 	}
 
-	public static async Task Release(
-		string token,
+	async Task<bool> ReleaseExists(
+		string repositoryOwner, string repositoryName, string releaseTag)
+	{
+		try
+		{
+			_ = await ReleaseApi.Get(repositoryOwner, repositoryName, releaseTag);
+			return true;
+		}
+		catch (NotFoundException)
+		{
+			return false;
+		}
+	}
+
+	public async Task<bool> Release(
 		NuGetVersion packageVersion,
 		GitRepository gitRepository,
 		GitVersion gitVersion,
 		ReleaseNotes releaseNotes,
 		AbsolutePath[] artifacts)
 	{
-		var credentials = new Credentials(token);
-
-		GitHubTasks.GitHubClient = new GitHubClient(
-			new ProductHeaderValue(nameof(GitHubReleaser)),
-			new InMemoryCredentialStore(credentials));
-
 		var releaseTag = packageVersion.ToString();
 		var repositoryOwner = gitRepository.GetGitHubOwner();
 		var repositoryName = gitRepository.GetGitHubName();
+		
+		var releaseExists = await ReleaseExists(repositoryOwner, repositoryName, releaseTag);
+		if (releaseExists)
+		{
+			Log.Warning("Release {ReleaseTag} already exists, skipping...", releaseTag);
+			return false;
+		}
 
 		Log.Information("Creating draft release {ReleaseTag}...", releaseTag);
 
@@ -54,21 +78,16 @@ public class GitHubReleaser
 			Body = releaseNotes.Notes.Join("\n"),
 		};
 
-		var createdRelease = await GitHubTasks
-			.GitHubClient
-			.Repository
-			.Release.Create(repositoryOwner, repositoryName, newRelease);
+		var createdRelease = await ReleaseApi.Create(repositoryOwner, repositoryName, newRelease);
 
 		foreach (var artifact in artifacts)
 			await UploadReleaseAssetToGithub(createdRelease, artifact);
 
 		Log.Information("Publishing release {ReleaseTag}...", releaseTag);
-		await GitHubTasks
-			.GitHubClient
-			.Repository
-			.Release
-			.Edit(
-				repositoryOwner, repositoryName, createdRelease.Id,
-				new ReleaseUpdate { Draft = false });
+		await ReleaseApi.Edit(
+			repositoryOwner, repositoryName, createdRelease.Id,
+			new ReleaseUpdate { Draft = false });
+
+		return true;
 	}
 }
