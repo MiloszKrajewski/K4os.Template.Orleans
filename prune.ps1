@@ -1,0 +1,1 @@
+Get-ChildItem -recurse -directory -include bin,obj | Remove-Item -recurse

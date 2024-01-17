@@ -1,0 +1,10 @@
+Microsoft.Extensions.Hosting
+
+Serilog
+Serilog.Extensions.Hosting
+Serilog.Formatting.Compact
+Serilog.Settings.Configuration
+Serilog.Sinks.Console
+Serilog.Sinks.File
+
+StackExchange.Redis

@@ -1,0 +1,10 @@
+version: "3.8"
+
+services: 
+  storage:
+    image: redis:7.2.1
+    command: "--appendonly yes"
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./../.local/storage/data:/data

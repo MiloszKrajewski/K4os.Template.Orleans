@@ -1,0 +1,19 @@
+﻿### API health
+
+GET {{api}}/health
+
+### Silo health
+
+GET {{silo}}/health
+
+### Echo
+
+GET {{api}}/echo?text=test
+
+### Add 2.34
+
+PUT {{api}}/acc/chris1/add?value=2.34
+
+### Get
+
+GET {{api}}/acc/chris1/sum

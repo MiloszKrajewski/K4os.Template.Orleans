@@ -1,0 +1,19 @@
+Microsoft.Extensions.DependencyInjection
+Microsoft.Extensions.Logging
+Microsoft.Extensions.Diagnostics.HealthChecks
+
+Microsoft.Orleans.Core
+Microsoft.Orleans.Client
+
+# Microsoft.Orleans.Clustering.Consul
+Microsoft.Orleans.Clustering.Redis
+
+Swashbuckle.AspNetCore
+
+prometheus-net
+prometheus-net.AspNetCore
+prometheus-net.AspNetCore.HealthChecks
+
+Serilog.AspNetCore
+
+Polly
