@@ -19,6 +19,13 @@ public partial class AccumulatorGrain: IRemindable
 			"tick" => HandleTick(),
 			_ => Task.CompletedTask,
 		};
+	
+	private async Task TryUnregisterReminder(string name)
+	{
+		var reminder = await this.GetReminder(name);
+		if (reminder is not null) 
+			await this.UnregisterReminder(reminder);
+	}
 
 	private async Task HandleTick()
 	{
@@ -30,7 +37,7 @@ public partial class AccumulatorGrain: IRemindable
 			return;
 		}
 		
-		await this.UnregisterReminder(await this.GetReminder("tick"));
+		await TryUnregisterReminder("tick");
 
 		if (count >= 5)
 		{

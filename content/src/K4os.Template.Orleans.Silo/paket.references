@@ -11,3 +11,6 @@ Microsoft.Orleans.Reminders.Redis
 OrleansDashboard
 
 Serilog.AspNetCore
+
+OpenTelemetry.Extensions.Hosting
+OpenTelemetry.Exporter.Prometheus.AspNetCore

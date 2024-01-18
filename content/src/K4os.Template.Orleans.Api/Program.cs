@@ -7,37 +7,40 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OpenTelemetry.Metrics;
 using Orleans;
 using Orleans.Configuration;
 using Orleans.Hosting;
-using Prometheus;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+var host = builder.Host;
+var services = builder.Services;
 
-builder.Host.BootstrapSerilog();
+host.BootstrapSerilog();
 
-builder.Services.AddSingleton<IClientConnectionRetryFilter, ConnectionRetryFilter>();
-builder.Services.AddTransient<ISimpleGrain>(
+services.AddSingleton<IClientConnectionRetryFilter, ConnectionRetryFilter>();
+services.AddTransient<ISimpleGrain>(
 	p => p.GetRequiredService<IClusterClient>().GetGrain<ISimpleGrain>(0));
 
-builder.Host.UseOrleansClient(
+host.UseOrleansClient(
 	(context, orleans) => {
 		var config = context.Configuration.GetSection("Silo").Get<SiloConfig>();
 		orleans.Configure<ClusterOptions>(cluster => cluster.Apply(config));
 		orleans.UseRedisClustering(redis => redis.Apply(config));
 	});
 
-builder.Services.AddHealthChecks().ForwardToPrometheus();
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+services.AddHealthChecks();
+services.AddControllers();
+services.AddEndpointsApiExplorer();
+services.AddSwaggerGen();
+services.AddOpenTelemetry().WithMetrics(b => b.AddPrometheusExporter());
 
 var app = builder.Build();
 
 app.UseSerilogRequestLogging();
 app.UseHealthChecks("/health");
-app.UseMetricServer();
+app.UseOpenTelemetryPrometheusScrapingEndpoint();
 
 if (builder.Environment.IsDevelopment())
 {

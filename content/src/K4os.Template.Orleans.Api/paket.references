@@ -10,10 +10,9 @@ Microsoft.Orleans.Clustering.Redis
 
 Swashbuckle.AspNetCore
 
-prometheus-net
-prometheus-net.AspNetCore
-prometheus-net.AspNetCore.HealthChecks
-
 Serilog.AspNetCore
+
+OpenTelemetry.Extensions.Hosting
+OpenTelemetry.Exporter.Prometheus.AspNetCore
 
 Polly

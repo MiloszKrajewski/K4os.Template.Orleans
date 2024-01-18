@@ -33,12 +33,11 @@ nuget Serilog.Settings.Configuration
 nuget Serilog.Sinks.Console
 nuget Serilog.Sinks.File
 
-nuget prometheus-net
-nuget prometheus-net.AspNetCore
-nuget prometheus-net.AspNetCore.HealthChecks
-
 nuget Polly
 nuget StackExchange.Redis
+
+nuget OpenTelemetry.Extensions.Hosting
+nuget OpenTelemetry.Exporter.Prometheus.AspNetCore
 
 nuget System.Reactive
 nuget System.Interactive

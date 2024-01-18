@@ -7,18 +7,22 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OpenTelemetry.Metrics;
 using Orleans;
 using Orleans.Configuration;
 using Orleans.Hosting;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+var host = builder.Host;
+var services = builder.Services;
 
-builder.Host.BootstrapSerilog();
-builder.Services.AddHealthChecks();
-builder.Services.AddHostedService<BackgroundLoop>();
+host.BootstrapSerilog();
+services.AddHealthChecks();
+services.AddHostedService<BackgroundLoop>();
+services.AddOpenTelemetry().WithMetrics(b => b.AddPrometheusExporter());
 
-builder.Host.UseOrleans(
+host.UseOrleans(
 	(context, silo) => {
 		var config = context.Configuration.GetSection("Silo").Get<SiloConfig>();
 		silo
@@ -37,6 +41,7 @@ builder.Host.UseOrleans(
 var app = builder.Build();
 
 app.UseHealthChecks("/health");
+app.UseOpenTelemetryPrometheusScrapingEndpoint();
 app.Map("/dashboard", x => x.UseOrleansDashboard());
 
 app.UseSerilogRequestLogging();

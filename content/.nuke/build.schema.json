@@ -75,7 +75,8 @@
               "Rebuild",
               "Release",
               "Restore",
-              "Test"
+              "Test",
+              "VerifyArtifacts"
             ]
           }
         },
@@ -96,7 +97,8 @@
               "Rebuild",
               "Release",
               "Restore",
-              "Test"
+              "Test",
+              "VerifyArtifacts"
             ]
           }
         },
