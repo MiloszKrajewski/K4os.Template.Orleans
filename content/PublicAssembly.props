@@ -5,11 +5,6 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
-  <ItemGroup>
-    <!-- NOTE: this might not be needed in .NET 8+ -->
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All"/>
-  </ItemGroup>
-
   <PropertyGroup>
     <Product>K4os.Template.Orleans</Product>
     <Description>...</Description>
@@ -37,6 +32,10 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <TreatWarningsAsErrors Condition=" '$(IsReleasing)' == 'true' ">true</TreatWarningsAsErrors>
   </PropertyGroup>
+  
+  <ItemGroup Condition=" $(Configuration) == 'Release' ">
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All"/>
+  </ItemGroup>
 
   <PropertyGroup Condition=" '$(SignAssembly)' == 'true' ">
     <!-- 
