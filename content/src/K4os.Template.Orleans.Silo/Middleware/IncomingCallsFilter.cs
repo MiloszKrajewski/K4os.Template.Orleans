@@ -38,6 +38,7 @@ public class IncomingCallsFilter: IIncomingGrainCallFilter
 				e,
 				"{GrainType}({GrainKey}).{Method} failed after {Elapsed:0.00}ms", 
 				type, grainKey, methodName, stopwatch.Elapsed.TotalMilliseconds);
+			throw;
 		}
 	}
 }
