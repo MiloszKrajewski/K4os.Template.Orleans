@@ -1,6 +1,6 @@
 using K4os.Template.Orleans.Hosting;
-using K4os.Template.Orleans.Silo.Configuration;
-using K4os.Template.Orleans.Silo.Configuration.Extensions;
+using K4os.Template.Orleans.Hosting.Configuration;
+using K4os.Template.Orleans.Silo.Hosting;
 using K4os.Template.Orleans.Silo.Internal;
 using K4os.Template.Orleans.Silo.Middleware;
 using Microsoft.AspNetCore.Builder;

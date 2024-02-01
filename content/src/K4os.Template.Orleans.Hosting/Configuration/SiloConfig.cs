@@ -1,11 +1,12 @@
-﻿namespace K4os.Template.Orleans.Silo.Configuration;
+﻿namespace K4os.Template.Orleans.Hosting.Configuration;
 
 public class SiloConfig
 {
-	public static readonly Uri DefaultRedisUri = new("redis://localhost:6379");
-	
-	public const int DefaultGatewayPort = 13372;
-	public const int DefaultSiloPort = 13373;
+	public class ClusterConfig: ClientConfig.ClusterConfig
+	{
+		public TimeSpan? KeepAliveInterval { get; set; }
+		public TimeSpan? KeepAliveTimeout { get; set; }
+	}
 
 	public class ListenConfig
 	{
@@ -19,15 +20,6 @@ public class SiloConfig
 		public string? Address { get; set; } = null;
 		public int? SiloPort { get; set; } = null;
 		public int? GatewayPort { get; set; } = null;
-	}
-
-	public class ClusterConfig
-	{
-		public string? ClusterId { get; set; }
-		public string? ServiceId { get; set; }
-		public Uri? RedisEndpoint { get; set; }
-		public TimeSpan? KeepAliveInterval { get; set; }
-		public TimeSpan? KeepAliveTimeout { get; set; }
 	}
 
 	public class PersistenceConfig

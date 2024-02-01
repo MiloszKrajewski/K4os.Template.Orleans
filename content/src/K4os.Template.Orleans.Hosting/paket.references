@@ -1,5 +1,8 @@
 Microsoft.Extensions.Hosting
 
+Microsoft.Orleans.Core
+Microsoft.Orleans.Clustering.Redis
+
 Serilog
 Serilog.Extensions.Hosting
 Serilog.Formatting.Compact

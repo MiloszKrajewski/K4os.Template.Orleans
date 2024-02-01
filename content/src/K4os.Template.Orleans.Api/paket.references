@@ -5,7 +5,6 @@ Microsoft.Extensions.Diagnostics.HealthChecks
 Microsoft.Orleans.Core
 Microsoft.Orleans.Client
 
-# Microsoft.Orleans.Clustering.Consul
 Microsoft.Orleans.Clustering.Redis
 
 Swashbuckle.AspNetCore

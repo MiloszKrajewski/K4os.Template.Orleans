@@ -9,6 +9,3 @@ Microsoft.Orleans.Clustering.Redis
 OrleansDashboard
 
 Serilog.AspNetCore
-
-OpenTelemetry.Extensions.Hosting
-OpenTelemetry.Exporter.Prometheus.AspNetCore

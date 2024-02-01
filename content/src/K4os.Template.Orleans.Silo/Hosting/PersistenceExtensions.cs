@@ -1,25 +1,17 @@
-﻿using K4os.Template.Orleans.Hosting;
+﻿using System;
+using K4os.Template.Orleans.Hosting;
+using K4os.Template.Orleans.Hosting.Configuration;
 using K4os.Template.Orleans.Silo.Middleware;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Orleans.Clustering.Redis;
-using Orleans.Configuration;
 using Orleans.Persistence;
 using Orleans.Serialization;
 using Orleans.Storage;
 
-namespace K4os.Template.Orleans.Silo.Configuration.Extensions;
+namespace K4os.Template.Orleans.Silo.Hosting;
 
-public static class RedisConfigExtensions
+public static class PersistenceExtensions
 {
-	public static RedisClusteringOptions Apply(
-		this RedisClusteringOptions redisOptions, SiloConfig? config)
-	{
-		var endpoint = config?.Persistence?.RedisEndpoint ?? SiloConfig.DefaultRedisUri;
-		(redisOptions.ConfigurationOptions ??= new()).ApplyUri(endpoint);
-		return redisOptions;
-	}
-
 	public static OptionsBuilder<RedisStorageOptions> Apply(
 		this OptionsBuilder<RedisStorageOptions> builder, SiloConfig? config)
 	{
@@ -29,7 +21,7 @@ public static class RedisConfigExtensions
 				IGrainStorageSerializer serializer = json
 					? CreateJsonSerializer(services)
 					: CreateBinarySerializer(services);
-				var endpoint = config?.Persistence?.RedisEndpoint ?? SiloConfig.DefaultRedisUri;
+				var endpoint = config?.Persistence?.RedisEndpoint ?? ConfigDefaults.DefaultRedisUri;
 				(redisOptions.ConfigurationOptions ??= new()).ApplyUri(endpoint);
 				redisOptions.GrainStorageSerializer = serializer;
 			});
@@ -41,13 +33,5 @@ public static class RedisConfigExtensions
 
 	private static JsonGrainStorageSerializer CreateJsonSerializer(IServiceProvider services) =>
 		new(services.GetRequiredService<OrleansJsonSerializer>());
-
-	public static RedisReminderTableOptions Apply(
-		this RedisReminderTableOptions redisOptions, SiloConfig? config)
-	{
-		var endpoint = config?.Reminders?.RedisEndpoint ?? SiloConfig.DefaultRedisUri;
-		(redisOptions.ConfigurationOptions ??= new()).ApplyUri(endpoint);
-		return redisOptions;
-	}
 }
 

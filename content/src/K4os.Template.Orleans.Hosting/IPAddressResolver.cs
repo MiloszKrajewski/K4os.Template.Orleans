@@ -1,9 +1,9 @@
 ﻿using System.Net;
 using System.Net.Sockets;
 
-namespace K4os.Template.Orleans.Silo.Configuration.Extensions;
+namespace K4os.Template.Orleans.Hosting;
 
-internal static class IpAddressResolver
+public static class IpAddressResolver
 {
 	private static readonly IPAddress Ip1111 = IPAddress.Parse("1.1.1.1");
 	private static readonly IPAddress Ip8888 = IPAddress.Parse("8.8.8.8");
