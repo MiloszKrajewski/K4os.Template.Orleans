@@ -6,6 +6,10 @@ namespace K4os.Template.Orleans.Silo.Configuration.Extensions;
 
 public static class GenericConfigExtensions
 {
+	private static readonly TimeSpan DefaultKeepAliveInterval = TimeSpan.FromSeconds(10);
+	private static readonly TimeSpan DefaultKeepAliveTimeout = TimeSpan.FromSeconds(20);
+	private static readonly TimeSpan MinimumKeepAliveInterval = TimeSpan.FromSeconds(1);
+
 	public static ClusterOptions Apply(
 		this ClusterOptions clusterOptions, SiloConfig? config)
 	{
@@ -14,6 +18,19 @@ public static class GenericConfigExtensions
 		clusterOptions.ClusterId = clusterId;
 		clusterOptions.ServiceId = $"{clusterId}/{serviceId}";
 
+		return clusterOptions;
+	}
+	
+	public static ClusterMembershipOptions Apply(
+		this ClusterMembershipOptions clusterOptions, SiloConfig? config)
+	{
+		var interval = (config?.Cluster?.KeepAliveInterval ?? DefaultKeepAliveInterval)
+			.NotLessThan(MinimumKeepAliveInterval);
+		var timeout = (config?.Cluster?.KeepAliveTimeout ?? DefaultKeepAliveTimeout)
+			.NotLessThan(interval);
+		var missedLimit = (int)Math.Ceiling((double)(timeout / interval - 1)).NotLessThan(0);
+		clusterOptions.IAmAliveTablePublishTimeout = interval;
+		clusterOptions.NumMissedTableIAmAliveLimit = missedLimit;
 		return clusterOptions;
 	}
 

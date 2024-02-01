@@ -24,7 +24,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".resources", ".resources", 
 		..\CHANGES.md = ..\CHANGES.md
 		..\LICENSE = ..\LICENSE
 		..\README.md = ..\README.md
-		..\services\docker-compose.yaml = ..\services\docker-compose.yaml
+		..\docker\docker-compose.yaml = ..\docker\docker-compose.yaml
+		..\docker\default.dockerfile = ..\docker\default.dockerfile
+		..\docker\envoy.yaml = ..\docker\envoy.yaml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_build", "..\.nuke\build\_build.csproj", "{93CCD1E3-92FC-4D4C-B538-A2149B259239}"
@@ -40,6 +42,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K4os.Template.Orleans.Api", "K4os.Template.Orleans.Api\K4os.Template.Orleans.Api.csproj", "{A3DC51F7-2729-45B7-A4FE-DC35F41B67F6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K4os.Template.Orleans.Hosting", "K4os.Template.Orleans.Hosting\K4os.Template.Orleans.Hosting.csproj", "{1CC323DE-6ACE-4A80-AD8D-85B4AA73BC54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K4os.Template.Orleans.Dashboard.Silo", "K4os.Template.Orleans.Dashboard.Silo\K4os.Template.Orleans.Dashboard.Silo.csproj", "{01B882C2-953C-4E93-8C5B-C89CD3F21750}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +77,10 @@ Global
 		{1CC323DE-6ACE-4A80-AD8D-85B4AA73BC54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CC323DE-6ACE-4A80-AD8D-85B4AA73BC54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CC323DE-6ACE-4A80-AD8D-85B4AA73BC54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01B882C2-953C-4E93-8C5B-C89CD3F21750}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01B882C2-953C-4E93-8C5B-C89CD3F21750}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01B882C2-953C-4E93-8C5B-C89CD3F21750}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01B882C2-953C-4E93-8C5B-C89CD3F21750}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,4 @@
-using K4os.Template.Orleans.Hosting;
+﻿using K4os.Template.Orleans.Hosting;
 using K4os.Template.Orleans.Silo.Configuration;
 using K4os.Template.Orleans.Silo.Configuration.Extensions;
 using K4os.Template.Orleans.Silo.Internal;
@@ -19,7 +19,6 @@ var services = builder.Services;
 
 host.BootstrapSerilog();
 services.AddHealthChecks();
-services.AddHostedService<BackgroundLoop>();
 services.AddOpenTelemetry().WithMetrics(b => b.AddPrometheusExporter());
 
 host.UseOrleans(

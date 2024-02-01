@@ -7,6 +7,13 @@ public class SiloConfig
 	public const int DefaultGatewayPort = 13372;
 	public const int DefaultSiloPort = 13373;
 
+	public class ListenConfig
+	{
+		public string? Interface { get; set; }
+		public int? SiloPort { get; set; }
+		public int? GatewayPort { get; set; }
+	}
+	
 	public class AdvertiseConfig
 	{
 		public string? Address { get; set; } = null;
@@ -14,30 +21,25 @@ public class SiloConfig
 		public int? GatewayPort { get; set; } = null;
 	}
 
-	public class ListenConfig
-	{
-		public string? Interface { get; set; }
-		public int? SiloPort { get; set; }
-		public int? GatewayPort { get; set; }
-	}
-
 	public class ClusterConfig
 	{
 		public string? ClusterId { get; set; }
 		public string? ServiceId { get; set; }
 		public Uri? RedisEndpoint { get; set; }
+		public TimeSpan? KeepAliveInterval { get; set; }
+		public TimeSpan? KeepAliveTimeout { get; set; }
 	}
 
 	public class PersistenceConfig
 	{
 		public Uri? RedisEndpoint { get; set; }
+		public bool UseJson { get; set; }
 	}
 	
 	public class RemindersConfig
 	{
 		public Uri? RedisEndpoint { get; set; }
 	}
-
 
 	public ListenConfig? Listen { get; set; }
 	public AdvertiseConfig? Advertise { get; set; }

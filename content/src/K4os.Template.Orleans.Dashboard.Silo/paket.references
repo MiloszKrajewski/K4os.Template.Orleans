@@ -1,0 +1,14 @@
+Microsoft.Extensions.Hosting
+Microsoft.Extensions.DependencyInjection
+Microsoft.Extensions.Logging
+
+Microsoft.Orleans.Server
+
+Microsoft.Orleans.Clustering.Redis
+
+OrleansDashboard
+
+Serilog.AspNetCore
+
+OpenTelemetry.Extensions.Hosting
+OpenTelemetry.Exporter.Prometheus.AspNetCore

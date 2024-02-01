@@ -8,11 +8,9 @@ public class IncomingCallsFilter: IIncomingGrainCallFilter
 {
 	private readonly ILoggerFactory _loggerFactory;
 
-	public IncomingCallsFilter(ILoggerFactory loggerFactory)
-	{
+	public IncomingCallsFilter(ILoggerFactory loggerFactory) => 
 		_loggerFactory = loggerFactory;
-	}
-	
+
 	public async Task Invoke(IIncomingGrainCallContext context)
 	{
 		var type = context.InterfaceMethod.DeclaringType;
