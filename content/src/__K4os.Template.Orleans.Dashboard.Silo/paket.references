@@ -5,12 +5,7 @@ Microsoft.Extensions.Logging
 Microsoft.Orleans.Server
 
 Microsoft.Orleans.Clustering.Redis
-Microsoft.Orleans.Persistence.Redis
-Microsoft.Orleans.Reminders.Redis
 
-# OrleansDashboard
+OrleansDashboard
 
 Serilog.AspNetCore
-
-OpenTelemetry.Extensions.Hosting
-OpenTelemetry.Exporter.Prometheus.AspNetCore

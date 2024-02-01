@@ -5,9 +5,10 @@
 # Default ports
 
 * API: http://localhost:13370
-* Silo Dashboard: http://localhost:13371
+* Silo API: http://localhost:13371
 * Silo Gateway: http://localhost:13372
-* Silo: http://localhost:13373
+* Silo 2 Silo: http://localhost:13373
+* Dashboard: http://localhost:13374
 
 # Usage
 

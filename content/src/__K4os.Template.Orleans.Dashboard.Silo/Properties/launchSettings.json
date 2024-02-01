@@ -1,0 +1,14 @@
+﻿{
+  "profiles": {
+    "K4os.Template.Orleans.Silo": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": false,
+      "launchUrl": "http://localhost:13371/dashboard",
+      "applicationUrl": "http://+:13371",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
