@@ -1,0 +1,44 @@
+version: "3.8"
+name: k4os-orleans
+
+services: 
+  storage:
+    image: redis:7.2.1
+    command: "--appendonly yes"
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./../.local/storage/data:/data
+  
+  envoy:
+    image: envoyproxy/envoy:distroless-v1.27-latest
+    ports:
+      - "9998:9998"
+      - "9999:9999"
+    volumes:
+      - ./envoy.yaml:/etc/envoy/envoy.yaml
+
+  silo-1: &silo
+    container_name: silo-1
+    image: wssonorleans-silo:latest
+    restart: no
+    depends_on:
+      - storage
+    ports:
+      - "5001:80"
+    environment:
+      - "Silo__Cluster__RedisEndpoint=redis://storage:6379"
+      - "Silo__Persistence__RedisEndpoint=redis://storage:6379"
+      - "Silo__Reminders__RedisEndpoint=redis://storage:6379"
+
+  silo-2:
+    <<: *silo
+    container_name: silo-2
+    ports:
+      - "5002:80"
+
+  silo-3:
+    <<: *silo
+    container_name: silo-3
+    ports:
+      - "5003:80"

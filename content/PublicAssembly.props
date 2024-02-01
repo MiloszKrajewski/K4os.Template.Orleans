@@ -1,11 +1,6 @@
 <Project>
 
   <PropertyGroup>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <Product>K4os.Template.Orleans</Product>
     <Description>...</Description>
     <PackageTags>... ... ...</PackageTags>
@@ -27,10 +22,13 @@
     <PackageIconUrl Condition=" Exists('$(RepositoryRoot)/icon.png') ">$(RepositoryUrl)/blob/master/icon.png?raw=true</PackageIconUrl>
   </PropertyGroup>
 
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+  <PropertyGroup Condition=" $(Configuration) == 'Release' ">
+    <!--<GenerateDocumentationFile>true</GenerateDocumentationFile>-->
+    <!--<TreatWarningsAsErrors Condition=" '$(IsReleasing)' == 'true' ">true</TreatWarningsAsErrors>-->
     <Optimize>true</Optimize>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <TreatWarningsAsErrors Condition=" '$(IsReleasing)' == 'true' ">true</TreatWarningsAsErrors>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
   </PropertyGroup>
   
   <ItemGroup Condition=" $(Configuration) == 'Release' ">
