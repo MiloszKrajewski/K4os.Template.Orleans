@@ -1,7 +1,6 @@
-using K4os.Template.Orleans.Api.Configuration;
-using K4os.Template.Orleans.Api.Configuration.Extensions;
 using K4os.Template.Orleans.Api.Middleware;
 using K4os.Template.Orleans.Hosting;
+using K4os.Template.Orleans.Hosting.Configuration;
 using K4os.Template.Orleans.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -14,18 +13,19 @@ using Orleans.Hosting;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
-var host = builder.Host;
-var services = builder.Services;
 
+var host = builder.Host;
+host.UseConsoleLifetime();
 host.BootstrapSerilog();
 
+var services = builder.Services;
 services.AddSingleton<IClientConnectionRetryFilter, ConnectionRetryFilter>();
 services.AddTransient<ISimpleGrain>(
 	p => p.GetRequiredService<IClusterClient>().GetGrain<ISimpleGrain>(0));
 
 host.UseOrleansClient(
 	(context, orleans) => {
-		var config = context.Configuration.GetSection("Silo").Get<SiloConfig>();
+		var config = context.Configuration.GetSection("Silo").Get<ClientConfig>();
 		orleans.Configure<ClusterOptions>(cluster => cluster.Apply(config));
 		orleans.UseRedisClustering(redis => redis.Apply(config));
 	});

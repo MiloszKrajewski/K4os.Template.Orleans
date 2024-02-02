@@ -7,7 +7,6 @@
 .ionide/
 paket-files/
 packages/
-.local/
     
 **/bin/
 **/obj/
