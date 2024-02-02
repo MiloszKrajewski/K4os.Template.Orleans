@@ -12,8 +12,7 @@ services:
   envoy:
     image: envoyproxy/envoy:distroless-v1.27-latest
     ports:
-      - "9998:9998"
-      - "9999:9999"
+      - "13370:9999"
     volumes:
       - ./envoy.yaml:/etc/envoy/envoy.yaml
       
