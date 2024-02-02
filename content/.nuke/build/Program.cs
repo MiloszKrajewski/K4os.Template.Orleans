@@ -168,7 +168,7 @@ class Program: NukeBuild
 		});
 	
 	Target ReleaseDocker => _ => _
-		//.DependsOn(Release)
+		.DependsOn(Release)
 		.Executes(() =>
 		{
 			var dockerTools = new DockerTools(DockerDirectory);

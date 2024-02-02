@@ -4,19 +4,11 @@ using System.Linq;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 
-public class DockerTools
+public class DockerTools(AbsolutePath dockerDirectory)
 {
-	readonly AbsolutePath DockerDirectory;
-	readonly string SourcePrefix;
-	readonly string TargetPrefix;
+	readonly string TargetPrefix = GetDockerImagePrefix(dockerDirectory);
 
-	public DockerTools(AbsolutePath dockerDirectory)
-	{
-		DockerDirectory = dockerDirectory;
-		TargetPrefix = GetDockerImagePrefix(dockerDirectory);
-	}
-
-    static string GetDockerImagePrefix(AbsolutePath dockerDirectory)
+	static string GetDockerImagePrefix(AbsolutePath dockerDirectory)
 	{
 		var dockerEnvFile = dockerDirectory / ".env";
 		if (!File.Exists(dockerEnvFile)) return null;
@@ -35,13 +27,13 @@ public class DockerTools
 	}
 
     static string RemoveComment(string raw) =>
-		(raw.IndexOf('#') switch { < 0 => raw, var i => raw.Substring(0, i) }).Trim();
+		(raw.IndexOf('#') switch { < 0 => raw, var i => raw[..i] }).Trim();
 
 	public AbsolutePath FindDockerFile(Project project)
 	{
 		return
-			OnlyIfExists(DockerDirectory / $"{project.Name}.dockerfile") ??
-			OnlyIfExists(DockerDirectory / "default.dockerfile");
+			OnlyIfExists(dockerDirectory / $"{project.Name}.dockerfile") ??
+			OnlyIfExists(dockerDirectory / "default.dockerfile");
 
 		AbsolutePath OnlyIfExists(AbsolutePath path) => File.Exists(path) ? path : null;
 	}
