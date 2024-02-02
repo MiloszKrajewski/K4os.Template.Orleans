@@ -22,6 +22,12 @@
 				"**/[Bb]in/**", "**/[Oo]bj/**",
 				"**/*.bak"
 			]
+		},
+		{
+			"source": "./content/.local", 
+			"target": "./K4os.Template.Orleans/.local",
+			"include": ["README.md", ".gitignore"],
+			"exclude": []
 		}
 	],
 	"guids": [
