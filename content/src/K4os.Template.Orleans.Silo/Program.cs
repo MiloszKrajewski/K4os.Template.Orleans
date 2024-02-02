@@ -32,7 +32,7 @@ host.UseOrleans(
 			.Configure<ClusterOptions>(cluster => cluster.Apply(config))
 			.Configure<EndpointOptions>(endpoints => endpoints.Apply(config))
 			.Configure<ReminderOptions>(reminders => reminders.Apply(config))
-			// .UseDashboard(dashboard => dashboard.HostSelf = true)
+			.UseDashboard(dashboard => dashboard.HostSelf = true)
 			.UseRedisClustering(redis => redis.Apply(config))
 			.AddRedisGrainStorageAsDefault(redis => redis.Apply(config))
 			.UseRedisReminderService(redis => redis.Apply(config))
