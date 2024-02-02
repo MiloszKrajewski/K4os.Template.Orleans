@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
-using Microsoft.Build.Tasks;
 using NuGet.Versioning;
 using Nuke.Common;
 using Nuke.Common.ChangeLog;
@@ -166,11 +164,21 @@ class Program: NukeBuild
 				var zipName = $"{a.Name}-{PackageVersion}.zip";
 				Log.Information("Compressing {Application}...", zipName);
 				(OutputDirectory / a.Name).CompressTo(OutputDirectory / zipName);
-
-				var dockerFile = FindDockerFile(a);
+			}
+		});
+	
+	Target ReleaseDocker => _ => _
+		//.DependsOn(Release)
+		.Executes(() =>
+		{
+			var dockerTools = new DockerTools(DockerDirectory);
+			
+			foreach (var a in Projects(IsApplication))
+			{
+				var dockerFile = dockerTools.FindDockerFile(a);
 				if (dockerFile is null) continue;
 
-				var imageName = a.Name.Replace(".", "-").ToLowerInvariant();
+				var imageName = dockerTools.GetDockerImageName(a);
 				var artifactsPath = RootDirectory.GetUnixRelativePathTo(OutputDirectory / a.Name);
 				DockerBuild(s => s
 					.SetProcessWorkingDirectory(RootDirectory)
@@ -184,15 +192,6 @@ class Program: NukeBuild
 				);
 			}
 		});
-
-	AbsolutePath FindDockerFile(Project project)
-	{
-		return
-			OnlyIfExists(DockerDirectory / $"{project.Name}.dockerfile") ??
-			OnlyIfExists(DockerDirectory / "default.dockerfile");
-
-		AbsolutePath OnlyIfExists(AbsolutePath path) => File.Exists(path) ? path : null;
-	}
 
 	Target VerifyArtifacts => _ => _
 		.After(Release)

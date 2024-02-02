@@ -1,5 +1,4 @@
 version: "3.8"
-name: k4os-orleans
 
 services: 
   storage:
@@ -19,7 +18,7 @@ services:
       - ./envoy.yaml:/etc/envoy/envoy.yaml
       
   silo:
-    image: k4os-template-orleans-silo:latest
+    image: ${DOCKER_IMAGE_PREFIX}/silo:latest
     depends_on:
       - storage
     deploy:
@@ -30,14 +29,14 @@ services:
       - "Silo__Reminders__RedisEndpoint=redis://storage:6379"
 
   api:
-    image: k4os-template-orleans-api:latest
+    image: ${DOCKER_IMAGE_PREFIX}/api:latest
     depends_on:
       - silo
     environment:
       - "Silo__Cluster__RedisEndpoint=redis://storage:6379"
         
   dashboard:
-    image: k4os-template-orleans-dashboard:latest
+    image: ${DOCKER_IMAGE_PREFIX}/dashboard:latest
     depends_on:
       - silo
     environment:

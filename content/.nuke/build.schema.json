@@ -74,6 +74,7 @@
               "PublishToNuget",
               "Rebuild",
               "Release",
+              "ReleaseDocker",
               "Restore",
               "Test",
               "VerifyArtifacts"
@@ -96,6 +97,7 @@
               "PublishToNuget",
               "Rebuild",
               "Release",
+              "ReleaseDocker",
               "Restore",
               "Test",
               "VerifyArtifacts"
