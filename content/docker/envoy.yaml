@@ -20,10 +20,11 @@ static_resources:
                     - name: backend
                       domains: ["*"]
                       routes:
-                        - match: { prefix: "/ws" }
-                          route: { prefix_rewrite: "/", cluster: "silo" }
                         - match: { prefix: "/dashboard" }
-                          route: { cluster: "silo" }
+                          route: { cluster: "dashboard" }
+                        - match: { prefix: "/" }
+                          route: { cluster: "api" }
+
                 http_filters:
                   - name: envoy.filters.http.router
                     typed_config:
@@ -61,4 +62,32 @@ static_resources:
                   address:
                     socket_address:
                       address: silo-3
+                      port_value: 80
+    - name: dashboard
+      connect_timeout: 5s
+      type: STRICT_DNS
+      lb_policy: ROUND_ROBIN
+      dns_lookup_family: V4_ONLY
+      load_assignment:
+        cluster_name: dashboard
+        endpoints:
+          - lb_endpoints:
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: dashboard
+                      port_value: 80
+    - name: api
+      connect_timeout: 5s
+      type: STRICT_DNS
+      lb_policy: ROUND_ROBIN
+      dns_lookup_family: V4_ONLY
+      load_assignment:
+        cluster_name: api
+        endpoints:
+          - lb_endpoints:
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: api
                       port_value: 80

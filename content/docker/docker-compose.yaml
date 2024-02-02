@@ -17,28 +17,28 @@ services:
       - "9999:9999"
     volumes:
       - ./envoy.yaml:/etc/envoy/envoy.yaml
-
-  silo-1: &silo
-    container_name: silo-1
-    image: wssonorleans-silo:latest
-    restart: no
+      
+  silo:
+    image: k4os-template-orleans-silo:latest
     depends_on:
       - storage
-    ports:
-      - "5001:80"
+    deploy:
+      replicas: 3
     environment:
       - "Silo__Cluster__RedisEndpoint=redis://storage:6379"
       - "Silo__Persistence__RedisEndpoint=redis://storage:6379"
       - "Silo__Reminders__RedisEndpoint=redis://storage:6379"
 
-  silo-2:
-    <<: *silo
-    container_name: silo-2
-    ports:
-      - "5002:80"
-
-  silo-3:
-    <<: *silo
-    container_name: silo-3
-    ports:
-      - "5003:80"
+  api:
+    image: k4os-template-orleans-api:latest
+    depends_on:
+      - silo
+    environment:
+      - "Silo__Cluster__RedisEndpoint=redis://storage:6379"
+        
+  dashboard:
+    image: k4os-template-orleans-dashboard:latest
+    depends_on:
+      - silo
+    environment:
+      - "Silo__Cluster__RedisEndpoint=redis://storage:6379"
