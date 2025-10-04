@@ -1,0 +1,49 @@
+services: 
+  storage:
+    image: redis:7.2.1
+    command: "--appendonly yes"
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./../.local/storage/data:/data
+  
+  envoy:
+    image: envoyproxy/envoy:distroless-v1.27-latest
+    ports:
+      - "13370:9999"
+    volumes:
+      - ./envoy.yaml:/etc/envoy/envoy.yaml
+        
+  telemetry:
+    image: mcr.microsoft.com/dotnet/aspire-dashboard:8.1
+    environment:
+      - DOTNET_DASHBOARD_UNSECURED_ALLOW_ANONYMOUS=true
+    ports:
+      - 18888:18888
+      - 4317:18889
+      
+  silo:
+    image: ${DOCKER_IMAGE_PREFIX}/silo:latest
+    depends_on:
+      - storage
+    deploy:
+      replicas: 3
+    environment:
+      Silo__Cluster__RedisEndpoint: redis://storage:6379
+      Silo__Persistence__RedisEndpoint: redis://storage:6379
+      Silo__Reminders__RedisEndpoint: redis://storage:6379
+      Silo__Streaming__RedisEndpoint: redis://storage:6379
+
+  api:
+    image: ${DOCKER_IMAGE_PREFIX}/api:latest
+    depends_on:
+      - silo
+    environment:
+      Silo__Cluster__RedisEndpoint: redis://storage:6379
+
+  dashboard:
+    image: ${DOCKER_IMAGE_PREFIX}/dashboard:latest
+    depends_on:
+      - silo
+    environment:
+      Silo__Cluster__RedisEndpoint: redis://storage:6379

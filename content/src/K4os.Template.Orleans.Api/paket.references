@@ -1,0 +1,12 @@
+Microsoft.AspNetCore.OpenApi
+
+Microsoft.Extensions.Hosting
+Microsoft.Extensions.Logging
+Microsoft.Extensions.Configuration
+Microsoft.Extensions.DependencyInjection
+
+Microsoft.Orleans.Core
+Microsoft.Orleans.Client
+Microsoft.Orleans.Clustering.Redis
+
+Polly

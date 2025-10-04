@@ -1,0 +1,63 @@
+storage none
+framework auto-detect
+source https://www.nuget.org/api/v2
+
+nuget Microsoft.AspNetCore.OpenApi ~> 9     # as long as this is 9.x...
+nuget Microsoft.OpenApi ~> 1                # ...this needs to be 1.x
+
+nuget Microsoft.AspNetCore.Connections.Abstractions
+
+nuget Microsoft.Extensions.Hosting
+nuget Microsoft.Extensions.Hosting.Abstractions
+nuget Microsoft.Extensions.Configuration
+nuget Microsoft.Extensions.DependencyInjection
+nuget Microsoft.Extensions.DependencyInjection.Abstractions
+nuget Microsoft.Extensions.Logging
+nuget Microsoft.Extensions.Logging.Abstractions
+nuget Microsoft.Extensions.Logging.Configuration
+nuget Microsoft.Extensions.Diagnostics.HealthChecks
+
+nuget Microsoft.Orleans.Core
+nuget Microsoft.Orleans.Core.Abstractions
+nuget Microsoft.Orleans.CodeGenerator
+nuget Microsoft.Orleans.Client
+nuget Microsoft.Orleans.Server
+nuget Microsoft.Orleans.Reminders
+nuget Microsoft.Orleans.Streaming
+
+nuget OrleansDashboard
+
+nuget Microsoft.Orleans.Clustering.Redis 
+nuget Microsoft.Orleans.Persistence.Redis
+nuget Microsoft.Orleans.Reminders.Redis
+
+nuget K4os.Orleans.Streaming.Redis
+
+nuget Serilog
+nuget Serilog.AspNetCore
+nuget Serilog.Extensions.Hosting
+nuget Serilog.Formatting.Compact
+nuget Serilog.Settings.Configuration
+nuget Serilog.Sinks.Console
+nuget Serilog.Sinks.File
+nuget Serilog.Sinks.OpenTelemetry
+
+nuget Polly
+nuget StackExchange.Redis
+
+nuget OpenTelemetry.Extensions.Hosting
+nuget OpenTelemetry.Instrumentation.Http
+nuget OpenTelemetry.Instrumentation.AspNetCore
+nuget OpenTelemetry.Instrumentation.Runtime
+
+nuget OpenTelemetry.Exporter.OpenTelemetryProtocol
+
+nuget System.Reactive
+nuget System.Interactive
+nuget Spectre.Console
+nuget Spectre.Console.Cli
+
+nuget Microsoft.NET.Test.Sdk
+nuget xunit
+nuget xunit.runner.visualstudio copy_local:true
+nuget coverlet.collector copy_local:true

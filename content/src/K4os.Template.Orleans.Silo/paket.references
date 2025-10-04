@@ -1,0 +1,13 @@
+Microsoft.Extensions.Hosting
+Microsoft.Extensions.Logging
+Microsoft.Extensions.Configuration
+Microsoft.Extensions.DependencyInjection
+
+Microsoft.Orleans.Server
+
+Microsoft.Orleans.Clustering.Redis
+Microsoft.Orleans.Persistence.Redis
+Microsoft.Orleans.Reminders.Redis
+K4os.Orleans.Streaming.Redis
+
+OrleansDashboard

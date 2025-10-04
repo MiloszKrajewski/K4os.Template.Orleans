@@ -1,0 +1,79 @@
+{
+	"author": "Milosz Krajewski",
+	"name": "K4os Orleans Template",
+	"shortName": "K4os.Orleans",
+	"identity": "K4os.Template.Orleans",
+	"sourceName": "K4os.Template.Orleans",
+	"tags": {
+		"language": "C#"
+	},
+	"classifications": [
+		"K4os", "Orleans"
+	],
+	"sources": [
+		{
+			"source": "./content", 
+			"target": "./K4os.Template.Orleans",
+			"include": ["**/*"],
+			"exclude": [
+				".fake/**", ".ionide/**", ".paket/**", "paket-files/**", "packages/**", ".nuke/temp/**", ".local/**",
+                ".secrets.cfg", ".signing.snk",
+                "src/.idea/**", "src/.vs/**", "src/*.DotSettings.user",
+				"**/[Bb]in/**", "**/[Oo]bj/**",
+				"**/*.bak"
+			]
+		},
+		{
+			"source": "./content/.local", 
+			"target": "./K4os.Template.Orleans/.local",
+			"include": ["README.md", ".gitignore"],
+			"exclude": []
+		}
+	],
+	"guids": [
+		"0686d0ab-d686-4f49-91f1-054c49f6a985",
+		"13391F1C-3F6C-4866-AE30-7F88E9664C4C",
+		"1CC323DE-6ACE-4A80-AD8D-85B4AA73BC54",
+		"403D9EA8-45E6-4364-B3CA-6E73104FFC47",
+		"9062B2A7-02A7-437E-94F5-5946E3D18157",
+		"93CCD1E3-92FC-4D4C-B538-A2149B259239",
+		"A3DC51F7-2729-45B7-A4FE-DC35F41B67F6",
+		"CCED0E16-103F-4DA2-A93B-1D61C279AE95",
+		"D9984D27-272F-4FA7-84DA-477F0D894F03",
+		"a68ac7c5-330a-4f4d-9fe0-f4f117109385",
+		"a6a4febd-ae40-43aa-8504-7a4fc6e59667",
+		"c6471822-eabd-45cf-b3f6-a74a4e0a92e0"
+	],
+	"symbols": {
+		"api-port": {
+			"type": "parameter",
+			"datatype": "int",
+			"replaces": "13370",
+			"defaultValue": "13370"
+		},
+		"dashboard-port": {
+			"type": "parameter",
+			"datatype": "int",
+			"replaces": "13371",
+			"defaultValue": "13371"
+		},
+		"gateway-port": {
+			"type": "parameter",
+			"datatype": "int",
+			"replaces": "13372",
+			"defaultValue": "13372"
+		},
+		"silo-port": {
+			"type": "parameter",
+			"datatype": "int",
+			"replaces": "13373",
+			"defaultValue": "13373"
+		},
+		"docker-name": {
+			"type": "parameter",
+			"datatype": "string",
+			"replaces": "k4os-template-orleans",
+			"defaultValue": "k4os-template-orleans"
+		}
+	}
+}

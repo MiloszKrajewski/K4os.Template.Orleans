@@ -1,0 +1,100 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2024
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".environment", ".environment", "{13391F1C-3F6C-4866-AE30-7F88E9664C4C}"
+	ProjectSection(SolutionItems) = preProject
+		..\.secrets.cfg = ..\.secrets.cfg
+		..\.gitignore = ..\.gitignore
+		..\Directory.Packages.props = ..\Directory.Packages.props
+		..\Directory.Build.props = ..\Directory.Build.props
+		..\Directory.Build.targets = ..\Directory.Build.targets
+		..\settings.cfg = ..\settings.cfg
+		..\.env = ..\.env
+		..\global.json = ..\global.json
+		..\nuget.config = ..\nuget.config
+		..\paket.dependencies = ..\paket.dependencies
+		..\PublicAssembly.props = ..\PublicAssembly.props
+		..\paket.lock = ..\paket.lock
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".resources", ".resources", "{9062B2A7-02A7-437E-94F5-5946E3D18157}"
+	ProjectSection(SolutionItems) = preProject
+		..\CHANGES.md = ..\CHANGES.md
+		..\LICENSE = ..\LICENSE
+		..\README.md = ..\README.md
+		..\docker\docker-compose.yaml = ..\docker\docker-compose.yaml
+		..\docker\default.dockerfile = ..\docker\default.dockerfile
+		..\docker\envoy.yaml = ..\docker\envoy.yaml
+		..\docker\.env = ..\docker\.env
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_build", "..\.nuke\build\_build.csproj", "{93CCD1E3-92FC-4D4C-B538-A2149B259239}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K4os.Template.Orleans.Tests", "K4os.Template.Orleans.Tests\K4os.Template.Orleans.Tests.csproj", "{D9984D27-272F-4FA7-84DA-477F0D894F03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K4os.Template.Orleans.Interfaces", "K4os.Template.Orleans.Interfaces\K4os.Template.Orleans.Interfaces.csproj", "{CCED0E16-103F-4DA2-A93B-1D61C279AE95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K4os.Template.Orleans.Grains", "K4os.Template.Orleans.Grains\K4os.Template.Orleans.Grains.csproj", "{403D9EA8-45E6-4364-B3CA-6E73104FFC47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K4os.Template.Orleans.Silo", "K4os.Template.Orleans.Silo\K4os.Template.Orleans.Silo.csproj", "{0686D0AB-D686-4F49-91F1-054C49F6A985}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K4os.Template.Orleans.Api", "K4os.Template.Orleans.Api\K4os.Template.Orleans.Api.csproj", "{A3DC51F7-2729-45B7-A4FE-DC35F41B67F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K4os.Template.Orleans.Hosting", "K4os.Template.Orleans.Hosting\K4os.Template.Orleans.Hosting.csproj", "{1CC323DE-6ACE-4A80-AD8D-85B4AA73BC54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K4os.Template.Orleans.Dashboard", "K4os.Template.Orleans.Dashboard\K4os.Template.Orleans.Dashboard.csproj", "{A6A4FEBD-AE40-43AA-8504-7A4FC6E59667}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K4os.Template.Orleans.Core", "K4os.Template.Orleans.Core\K4os.Template.Orleans.Core.csproj", "{C6471822-EABD-45CF-B3F6-A74A4E0A92E0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9984D27-272F-4FA7-84DA-477F0D894F03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9984D27-272F-4FA7-84DA-477F0D894F03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9984D27-272F-4FA7-84DA-477F0D894F03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9984D27-272F-4FA7-84DA-477F0D894F03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93CCD1E3-92FC-4D4C-B538-A2149B259239}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93CCD1E3-92FC-4D4C-B538-A2149B259239}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCED0E16-103F-4DA2-A93B-1D61C279AE95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCED0E16-103F-4DA2-A93B-1D61C279AE95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCED0E16-103F-4DA2-A93B-1D61C279AE95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCED0E16-103F-4DA2-A93B-1D61C279AE95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{403D9EA8-45E6-4364-B3CA-6E73104FFC47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{403D9EA8-45E6-4364-B3CA-6E73104FFC47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{403D9EA8-45E6-4364-B3CA-6E73104FFC47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{403D9EA8-45E6-4364-B3CA-6E73104FFC47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0686D0AB-D686-4F49-91F1-054C49F6A985}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0686D0AB-D686-4F49-91F1-054C49F6A985}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0686D0AB-D686-4F49-91F1-054C49F6A985}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0686D0AB-D686-4F49-91F1-054C49F6A985}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3DC51F7-2729-45B7-A4FE-DC35F41B67F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3DC51F7-2729-45B7-A4FE-DC35F41B67F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3DC51F7-2729-45B7-A4FE-DC35F41B67F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3DC51F7-2729-45B7-A4FE-DC35F41B67F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CC323DE-6ACE-4A80-AD8D-85B4AA73BC54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CC323DE-6ACE-4A80-AD8D-85B4AA73BC54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CC323DE-6ACE-4A80-AD8D-85B4AA73BC54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CC323DE-6ACE-4A80-AD8D-85B4AA73BC54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6A4FEBD-AE40-43AA-8504-7A4FC6E59667}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6A4FEBD-AE40-43AA-8504-7A4FC6E59667}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6A4FEBD-AE40-43AA-8504-7A4FC6E59667}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6A4FEBD-AE40-43AA-8504-7A4FC6E59667}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6471822-EABD-45CF-B3F6-A74A4E0A92E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6471822-EABD-45CF-B3F6-A74A4E0A92E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6471822-EABD-45CF-B3F6-A74A4E0A92E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6471822-EABD-45CF-B3F6-A74A4E0A92E0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A68AC7C5-330A-4F4D-9FE0-F4F117109385}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,35 @@
+﻿### API health
+
+GET {{api}}/health
+
+### Silo health
+
+GET {{silo}}/health
+
+### Time
+
+GET {{api}}/time
+
+### Echo
+
+GET {{api}}/echo?text=test
+
+### Fail
+
+GET {{api}}/fail?status=415
+
+### Acquire lock
+
+POST {{api}}/locks/my_lock
+
+### Renew lock
+
+PUT {{api}}/locks/my_lock/d3247c5b-0e61-47f5-b692-d4ddc1d69a28
+
+### Release lock
+
+DELETE {{api}}/locks/my_lock/d3247c5b-0e61-47f5-b692-d4ddc1d69a28
+
+### Test
+
+POST {{api}}//test
